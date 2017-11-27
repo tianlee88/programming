@@ -1,20 +1,27 @@
-/**
- * An interface describing a representation of integer points on a 2D plane.
- */
+public class IntPoint2D{
+int x;
+int y;
 
 
+  public IntPoint2D(int _x, int _y){
+    x = _x;
+    y = _y;
 
-public interface IIntPoint2D {
+  }
     /**
      * @returns the X coordinate
      */
-    public int getX();
+    public int getX(){
+      return x;
+    }
 
 
     /**
      * @returns the Y coordinate
      */
-    public int getY();
+    public int getY(){
+      return y;
+    }
 
     /**
      * Computes the manhattan distance to another point.
@@ -22,8 +29,10 @@ public interface IIntPoint2D {
      * @param o the other point
      * @returns the manhattan distance
      */
-    public int manhattanDistance(IIntPoint2D o);
-
+    public int manhattanDistance(IntPoint2D o){
+    int manhatten_distance = Math.abs(x - o.getX()) + Math.abs(y - o.getY());
+    return manhatten_distance;
+    }
 
     /**
      * Computes the euclidean distance to another point.
@@ -31,7 +40,11 @@ public interface IIntPoint2D {
      * @param o the other point
      * @returns the euclidean distance
      */
-    public double distance(IIntPoint2D o);
+    public double distance(IntPoint2D o){
+      double e_distance = Math.sqrt(Math.pow(x-o.getX(),2) + Math.pow(y-o.getY(),2));
+      return e_distance;
+
+    }
 
 
 
@@ -41,19 +54,34 @@ public interface IIntPoint2D {
      * Converts a point object to a string of the form (X,Y)
      * @returns human friendly point representation
      */
-    public String toString();
+    public String toString(){
+
+      return "("+ x + "," + y + ")";
+    }
 
 
     /**
      * Determines if this point is the same as another (i.e. x1=x2 and y1=y2)
      * @returns true if this point is the same as point o
      */
-  public boolean equals(Object o);
+  public boolean equals(IntPoint2D o){
+      if (x != o.getX()){
+        return false;
+      }
+      else if (y != o.getY()){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
 
     /**
      * Hashcode to support some standard library data structures
      * formula: (x<<16)+y
      * @returns the hashcode for the point
      */
-    public int hashcode();
+    public int hashcode(){
+      return (x<<16)+y;
+    }
 }
