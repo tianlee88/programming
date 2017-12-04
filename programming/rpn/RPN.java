@@ -7,10 +7,10 @@ public class RPN {
             System.out.println("Usage: java RPN <token> ...");
             return;
         }
-        IQueue<RPNToken> tokens = new RingQueue<RPNToken>(100);
-        IStack<Double> stack  = new LinkStack<Double>(100);
+        IQueue<RPNToken> tokens = new ArrayQueue<RPNToken>(5);
+        IStack<Double> stack  = new Stack<Double>();
         RPNCore core  = new RPNCore();
-        
+
         for(int i=0; i<argv.length; i++) {
             try {
                 Double v = new Double(argv[i]);
@@ -34,7 +34,7 @@ public class RPN {
                 return;
             }
         }
-            
+
         try {
             core.compute(tokens, stack);
             System.out.println("Answer is: "+stack.pop());
