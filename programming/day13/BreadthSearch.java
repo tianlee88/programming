@@ -9,7 +9,13 @@ public class BreadthSearch<N,W> implements ISearcher<N,W>
  * @return if a path of any length exists
  */
 public boolean pathExists(IGraph<N,W> g, INode<N> s, INode<N> e){
-  return false;
+  if (getPath(g,s,e)==null){
+    return false;
+  }
+  else{
+    return true;
+
+  }
   }
 
 
@@ -101,17 +107,17 @@ public static void main(String[] args) {
   g.addNode("7");
 
 
-  g.addEdge(g.fetchNode("1"),g.fetchNode("2"),0);
-  g.addEdge(g.fetchNode("1"),g.fetchNode("3"),0);
-  g.addEdge(g.fetchNode("3"),g.fetchNode("2"),0);
-  g.addEdge(g.fetchNode("2"),g.fetchNode("4"),0);
-  g.addEdge(g.fetchNode("4"),g.fetchNode("3"),0);
-  g.addEdge(g.fetchNode("5"),g.fetchNode("3"),0);
-  g.addEdge(g.fetchNode("4"),g.fetchNode("3"),0);
-  g.addEdge(g.fetchNode("4"),g.fetchNode("5"),0);
-  g.addEdge(g.fetchNode("5"),g.fetchNode("6"),0);
-  g.addEdge(g.fetchNode("6"),g.fetchNode("4"),0);
-  g.addEdge(g.fetchNode("6"),g.fetchNode("7"),0);
+  // g.addEdge(g.fetchNode("1"),g.fetchNode("2"),0);
+  // g.addEdge(g.fetchNode("1"),g.fetchNode("3"),0);
+  // g.addEdge(g.fetchNode("3"),g.fetchNode("2"),0);
+  // g.addEdge(g.fetchNode("2"),g.fetchNode("4"),0);
+  // g.addEdge(g.fetchNode("4"),g.fetchNode("3"),0);
+  // g.addEdge(g.fetchNode("5"),g.fetchNode("3"),0);
+  // g.addEdge(g.fetchNode("4"),g.fetchNode("3"),0);
+  // g.addEdge(g.fetchNode("4"),g.fetchNode("5"),0);
+  // g.addEdge(g.fetchNode("5"),g.fetchNode("6"),0);
+  // g.addEdge(g.fetchNode("6"),g.fetchNode("4"),0);
+  // g.addEdge(g.fetchNode("6"),g.fetchNode("7"),0);
 
 
   // System.out.println(g.getEdgesFrom(g.fetchNode("5"))[0].getDestination().getValue());
@@ -119,16 +125,9 @@ public static void main(String[] args) {
 
 
 
-  //   System.out.println("start");
-  // System.out.println(g.fetchNode("1").getValue());
-  // System.out.println(g.fetchNode("2").getValue());
-  // System.out.println(g.fetchNode("3").getValue());
-  // System.out.println(g.fetchNode("4").getValue());
-  // System.out.println(g.fetchNode("5").getValue());
-  // System.out.println(g.fetchNode("6").getValue());
-  // System.out.println(g.fetchNode("7").getValue());
-  // // System.out.println(g.fetchNode("8").getValue());
-  // System.out.println("end");
+
+
+  // nice way to print out path
   IList<INode<String>> path = d.getPath(g,g.fetchNode("1"),g.fetchNode("7"));
   for (int i =0; i<path.size();i++){
     System.out.println(path.fetch(i).getValue());
