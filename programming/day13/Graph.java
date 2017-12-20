@@ -122,6 +122,9 @@ public class Graph<N,W> implements IGraph<N,W>
           counter++;
         }
       }
+      if(counter ==0){
+        return null;
+      }
       IEdge[] edge_array = new Edge[counter];
       int counter1 = 0;
       for (int i = 0; i<edges.size(); i++){

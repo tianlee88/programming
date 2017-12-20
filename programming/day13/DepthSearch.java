@@ -75,6 +75,8 @@ public IList<INode<N>> getPath(IGraph<N,W> g, INode<N> s, INode<N> e){
   {
 
   System.out.println("went through the loop");
+  System.out.println("wtf");
+
 
     if (temp_stack.isEmpty() == true) {
       System.out.println("its lit");
@@ -100,7 +102,13 @@ public IList<INode<N>> getPath(IGraph<N,W> g, INode<N> s, INode<N> e){
         source_node = (INode<N>)path_stack.pop();
 
       while(visitedHelper(g,source_node,visited_nodes)==0){
-      source_node = (INode<N>)path_stack.pop();
+      if(path_stack.pop()==null){
+        return null;
+      }
+      else{
+        source_node = (INode<N>)path_stack.pop();
+      }
+
       // System.out.println(source_node.getValue()+"other guy");
       }
       // System.out.println(source_node.getValue()+"this is the guy");
@@ -165,16 +173,19 @@ public static void main(String[] args) {
     // g.addEdge(g.fetchNode("5"),g.fetchNode("8"),0);
     // g.addEdge(g.fetchNode("7"),g.fetchNode("8"),0);
 
-
-
-    g.addEdge(g.fetchNode("1"),g.fetchNode("3"),0);
-    g.addEdge(g.fetchNode("3"),g.fetchNode("4"),0);
-    g.addEdge(g.fetchNode("3"),g.fetchNode("7"),0);
     g.addEdge(g.fetchNode("1"),g.fetchNode("2"),0);
-    g.addEdge(g.fetchNode("2"),g.fetchNode("6"),0);
-    g.addEdge(g.fetchNode("2"),g.fetchNode("5"),0);
-    g.addEdge(g.fetchNode("5"),g.fetchNode("8"),0);
-      g.addEdge(g.fetchNode("1"),g.fetchNode("2"),0);
+    g.addEdge(g.fetchNode("3"),g.fetchNode("4"),0);
+
+
+
+    // g.addEdge(g.fetchNode("1"),g.fetchNode("3"),0);
+    // g.addEdge(g.fetchNode("3"),g.fetchNode("4"),0);
+    // g.addEdge(g.fetchNode("3"),g.fetchNode("7"),0);
+    // g.addEdge(g.fetchNode("1"),g.fetchNode("2"),0);
+    // g.addEdge(g.fetchNode("2"),g.fetchNode("6"),0);
+    // g.addEdge(g.fetchNode("2"),g.fetchNode("5"),0);
+    // g.addEdge(g.fetchNode("5"),g.fetchNode("8"),0);
+    //   g.addEdge(g.fetchNode("1"),g.fetchNode("2"),0);
 
   // g.addEdge(g.fetchNode("1"),g.fetchNode("2"),0);
   //  g.addEdge(g.fetchNode("2"),g.fetchNode("3"),0);
@@ -200,10 +211,11 @@ public static void main(String[] args) {
     // System.out.println("end");
 
  //System.out.println(d.pathExists(g,g.fetchNode("1"),g.fetchNode("5")));
-    IList<INode<String>> path = d.getPath(g,g.fetchNode("1"),g.fetchNode("8"));
-    for (int i =0; i<path.size();i++){
-      System.out.println(path.fetch(i).getValue());
-    }
+ System.out.println(d.getPath(g,g.fetchNode("1"),g.fetchNode("4")));
+    // IList<INode<String>> path = d.getPath(g,g.fetchNode("1"),g.fetchNode("3"));
+    // for (int i =0; i<path.size();i++){
+    //   System.out.println(path.fetch(i).getValue());
+    // }
 
     // System.out.println(d.getPath(g,g.fetchNode("1"),g.fetchNode("5")).fetch(1).getValue());
     // System.out.println(d.getPath(g,g.fetchNode("1"),g.fetchNode("5")).fetch(2).getValue());

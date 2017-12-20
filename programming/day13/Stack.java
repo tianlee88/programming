@@ -35,7 +35,7 @@ public boolean isEmpty(){
  * @return the value
  */
 public T pop() {
-//  if (length == 0){throw new UnderFlowException();}
+  if (length == 0){return null;}
   T v = top.getValue();
   top = top.getNext();
   length--;
